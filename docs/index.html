@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>City Distance Calculator</title>
+  <meta name="description" content="Simple distance calculator between Vale do Ribeira cities. Accessible, responsive, semantic." />
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+<body class="theme-dark">
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <h1 class="site-title">Distance Calculator</h1>
+
+      <div class="controls" role="region" aria-label="Controls">
+        <div class="lang-switch" aria-label="Language switcher">
+          <label for="lang" class="visually-hidden">Language</label>
+          <select id="lang" aria-label="Select language">
+            <option value="en">English (EN)</option>
+            <option value="pt">Português (PT-BR)</option>
+            <option value="es">Español (ES)</option>
+          </select>
+        </div>
+
+        <button id="themeToggle" class="theme-toggle" aria-pressed="true" aria-label="Toggle dark mode">
+          <span id="themeIcon" aria-hidden="true">
+            <!-- Moon icon (dark) / Sun icon (light) toggled by JS -->
+            <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+            </svg>
+          </span>
+          <span class="visually-hidden" id="themeLabel">Dark mode</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" id="main" role="main">
+    <section class="calculator" aria-labelledby="calcTitle">
+      <h2 id="calcTitle">Distance Calculator</h2>
+
+      <form id="distanceForm" class="form" aria-describedby="formDesc">
+        <p id="formDesc" class="sr-only">Select two cities to calculate the distance in kilometers.</p>
+
+        <div class="row">
+          <label for="cityA">From</label>
+          <select id="cityA" required aria-required="true"></select>
+        </div>
+
+        <div class="row">
+          <label for="cityB">To</label>
+          <select id="cityB" required aria-required="true"></select>
+        </div>
+
+        <div class="row">
+          <button type="submit" id="calcBtn" class="btn primary">Calculate</button>
+          <button type="button" id="swapBtn" class="btn" aria-label="Swap cities">Swap</button>
+        </div>
+      </form>
+
+      <div id="result" class="result" role="status" aria-live="polite"></div>
+
+      <details class="notes">
+        <summary>Notes</summary>
+        <p>
+          Distances are calculated using the Haversine formula between city coordinates.
+          Values are approximate and intended for demonstration only.
+        </p>
+      </details>
+    </section>
+
+    <aside class="legend" aria-labelledby="legendTitle">
+      <h3 id="legendTitle">Cities included</h3>
+      <ul id="cityList"></ul>
+    </aside>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p>Built by Nivaldo Beirão</p>
+    </div>
+  </footer>
+
+  <script src="./src/script.js" defer></script>
+</body>
+</html>
